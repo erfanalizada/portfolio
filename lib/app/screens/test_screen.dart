@@ -1,49 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/app/interfaces/i_text_builder.dart';
 import 'package:portfolio/app/models/color_model.dart';
+import 'package:portfolio/app/providers/managers/manager_providers.dart';
+import 'package:portfolio/app/providers/theme/theme_provider.dart';
+import 'package:portfolio/app/widgets/glow_wrapper.dart';
+import 'package:portfolio/app/widgets/small_container.dart';
 import 'package:portfolio/app/widgets/toggle_widget.dart';
-import 'package:portfolio/app/widgets/small_container.dart'; // Import your widget
 
 class TestScreen extends ConsumerWidget {
-  final AppColors colors;
-  const TestScreen({super.key, required this.colors});
+  const TestScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final AppColors getColors = ref.watch(appColorsProvider);
+    final ITextBuilder generateText = ref.watch(textProvider);
+
+    final Map<String, List<String>> techStack = {
+      'Technologies that has been used': ['Flutter using dart', 'Riverpod flutter package', 'Firebase realtime database', 'Dart which belongs to flutter'],
+    };
+
     return Scaffold(
+      backgroundColor: getColors.primary,
       appBar: AppBar(
+        backgroundColor: getColors.secondary,
         title: const Text("Test Screen"),
-        titleTextStyle: TextStyle(fontSize: 20, color: colors.text),
+        titleTextStyle: TextStyle(fontSize: 20, color: getColors.text),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16),
-            child: ToggleWidget(colors: colors),
+            child: ToggleWidget(colors: getColors),
           ),
         ],
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          // Calculate width and height based on layout constraints
-          final width = constraints.maxWidth * 0.6;
-          final height = constraints.maxHeight *0.6; // because of AspectRatio 1.5
-
-          return SingleChildScrollView(
-            child: Center(
-              child: SizedBox(
-                width: width,
-                height: height,
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height,
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 40),
+              child: GlowWrapper(
+                color: getColors.links,
+                intensity: 2,
+                hoverIntensity: 25,
+                hoverSpread: 2,
+                radius: 25,
                 child: SmallContainer(
-                  colors: colors,
-                  data: {
-                    "Technologies that has been adapted": ["Flutter", "Riverpod", "Firebase", "Dart"]
-                  },
-                  image: 'assets/images/flutter.png', // or a network image
-                  size: Size(width, height),
+                  title: "Technologies Used",
+                  text: generateText.buildUnorderedList(techStack),
+                  imagePath: 'assets/pic.png',
+                  colors: getColors,
                 ),
               ),
             ),
-          );
-        },
+          ),
+        ),
       ),
     );
   }

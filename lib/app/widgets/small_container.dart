@@ -1,60 +1,93 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/providers/managers/manager_providers.dart';
 
-class SmallContainer extends ConsumerWidget {
+class SmallContainer extends StatelessWidget {
+  final String title;
+  final String text;
+  final String imagePath;
   final AppColors colors;
-  final Map<String, List<String>> data;
-  final String image;
-  final Size size;
 
-const SmallContainer({
-  super.key,
-  required this.colors,
-  required this.data,
-  required this.image,
-  required this.size, // new
-});
-
+  const SmallContainer({
+    super.key,
+    required this.title,
+    required this.text,
+    required this.imagePath,
+    required this.colors,
+  });
 
   @override
-Widget build(BuildContext context, WidgetRef ref) {
-  final textBuilderManager = ref.watch(textProvider);
-  final String result = textBuilderManager.buildUnorderedList(data);
-
-  return SizedBox(
-    width: size.width,
-    height: size.height,
-    child: Container(
-      color: colors.secondary,
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          // 🖼️ Image: 40% height
-          SizedBox(
-            height: size.height * 0.2,
-            child: image.startsWith('http')
-                ? Image.network(image, fit: BoxFit.contain)
-                : Image.asset(image, fit: BoxFit.contain),
-          ),
-
-          const SizedBox(height: 16),
-
-          // 📝 Text area: 40% height
-          SizedBox(
-            height: size.height * 0.4,
-            child: SingleChildScrollView(
-              child: Text(
-                result,
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
-          ),
-        ],
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 400,
+      decoration: BoxDecoration(
+        color: colors.secondary,
+        borderRadius: BorderRadius.circular(25),
+        border: Border.all(color: colors.border, width: 2),
       ),
-    ),
-  );
-}
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final imageWidth = constraints.maxWidth * 0.9;
+          final imageHeight = constraints.maxHeight * 0.3;
+
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.start, // 👈 Start from top
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 16), // Add a little top margin
+
+              // Title
+              Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: colors.text,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              // Image
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Container(
+                  width: imageWidth,
+                  height: imageHeight,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: colors.border, width: 1),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image.asset(
+                      imagePath,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 14),
+
+              // Body text
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                child: Text(
+                  text,
+                  style: TextStyle(
+                    color: colors.text,
+                    fontSize: 14,
+                    height: 1.4,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
 }

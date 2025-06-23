@@ -1,7 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/app/models/color_model.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
 import 'package:portfolio/app/screens/test_screen.dart';
 
@@ -28,14 +26,12 @@ class MyApp extends ConsumerWidget {
         ),
       ),
       data: (isDarkmode) {
-        final colors = ref.watch(appColorsProvider);
-
         return MaterialApp(
           title: 'Flutter Demo',
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: isDarkmode ? ThemeMode.dark : ThemeMode.light,
-          home: TestScreen(colors: colors),
+          home: TestScreen(),
         );
       },
     );
