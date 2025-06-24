@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
 import 'package:portfolio/app/screens/test_screen.dart';
+import 'package:portfolio/app/widgets/screen_size_overlay.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -13,6 +14,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final darkModeAsync = ref.watch(darkModeProvider);
+    final getColors=ref.watch(appColorsProvider);
 
     return darkModeAsync.when(
       loading: () => const MaterialApp(
@@ -31,7 +33,7 @@ class MyApp extends ConsumerWidget {
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: isDarkmode ? ThemeMode.dark : ThemeMode.light,
-          home: TestScreen(),
+          home: ScreenSizeOverlay(screen: TestScreen(),colors: getColors,),
         );
       },
     );

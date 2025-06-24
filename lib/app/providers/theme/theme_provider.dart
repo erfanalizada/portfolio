@@ -3,31 +3,33 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/providers/theme/theme_saver_class.dart';
 import 'package:portfolio/app/models/color_model.dart';
 
-final darkModeProvider  = AsyncNotifierProvider<ModeNotifier,bool>(ModeNotifier.new);
-
+final darkModeProvider = AsyncNotifierProvider<ModeNotifier, bool>(ModeNotifier.new);
 
 const lightAppColors = AppColors(
-  button: Colors.white,
-  primary: Color(0xFFFFFEFD),
-  secondary: Color(0xFFFFFFFF),
-  title: Color(0xFF094DBE),
-  text: Color(0xFF02141D),
-  buttonText: Color(0xFF02141D),
-  links: Color(0xFFDAB11C),
-  border: Color(0xFF9DA1A2),
+  button: Color(0xFF4CAF50),              // Vibrant lime green for buttons (from "Lime" 500)
+  primary: Color.fromARGB(255, 225, 255, 253),             // Light cyan background (inspired by overall light tone)
+  secondary: Color(0xFFB2DFDB),           // Softer cyan for surfaces (from "Tiber" lighter shades)
+  title: Color(0xFF212121),               // Dark gray for bold headers (from "Fusveous Gray" darker tones)
+  text: Color.fromARGB(255, 0, 0, 0),                // Medium gray for readable text
+  buttonText: Color(0xFFFFFFFF),          // Crisp white for button text
+  links: Color(0xFF2196F3),               // Bright blue for links (from "Tiber" blues)
+  border: Color(0xFFB0BEC5),              // Light gray-blue for borders
+  appbar: Color(0xFFB2DFDB),              // Fresh cyan for app bar (from "Tiber" 300-400 range)
 );
+
+
 
 const darkAppColors = AppColors(
-  button: Color(0xFFDAB11C),
-  primary: Color(0xFF02141D),
-  secondary: Color(0xFF001E29),
-  title: Color(0xFFDAB11C),
-  text: Color(0xFFFFFEFD),
-  buttonText: Color(0xFF02141D),
-  links: Color(0xFF55C3E1),
-  border: Color(0xFF40565E),
+  button: Color(0xFFDAB11C),                        // Golden yellow
+  primary: Color(0xFF02141D),                       // Deep navy
+  secondary: Color(0xFF001E29),                     // Darker contrast
+  title: Color(0xFFDAB11C),                         // Same gold for brand
+  text: Color(0xFFFFFEFD),                          // Off-white text
+  buttonText: Color(0xFF02141D),                    // Dark on gold
+  links: Color(0xFF55C3E1),                         // Light blue links
+  border: Color(0xFF40565E),                        // Dark grey-blue borders
+  appbar: Color(0xFF001E29),                        // Slightly lighter than primary for hierarchy
 );
-
 
 final appColorsProvider = Provider<AppColors>((ref) {
   final isDarkMode = ref.watch(darkModeProvider).value ?? false;

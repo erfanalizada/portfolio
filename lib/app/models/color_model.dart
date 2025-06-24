@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 class AppColors {
   final Color button;
   final Color primary;
@@ -9,6 +11,7 @@ class AppColors {
   final Color links;
   final Color border;
   final Color buttonText;
+  final Color appbar;
 
   const AppColors({
     required this.button,
@@ -18,6 +21,7 @@ class AppColors {
     required this.text,
     required this.links,
     required this.border,
-    required this.buttonText
+    required this.buttonText,
+    required this.appbar,
   });
 }

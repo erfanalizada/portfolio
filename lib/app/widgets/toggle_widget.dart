@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
-import 'package:portfolio/app/models/color_model.dart'; // your AppColors model
+import 'package:portfolio/app/models/color_model.dart';
 
 class ToggleWidget extends ConsumerWidget {
   final AppColors colors;
@@ -12,22 +12,28 @@ class ToggleWidget extends ConsumerWidget {
     final isDarkMode = ref.watch(darkModeProvider).value ?? false;
     final modeNotifier = ref.read(darkModeProvider.notifier);
 
+    // Color logic based on current mode
+    final Color toggleColor = isDarkMode ? colors.links : colors.button;
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(Icons.wb_sunny, color: isDarkMode ? colors.border : colors.links),
+        Icon(Icons.wb_sunny, size: 20, color: isDarkMode ? colors.border : colors.button),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Switch(
             value: isDarkMode,
             onChanged: (_) => modeNotifier.toggle(),
-            activeColor: colors.links,              // thumb when ON
-            activeTrackColor: colors.border,        // track when ON
-            inactiveThumbColor: colors.buttonText,  // thumb when OFF
-            inactiveTrackColor: colors.border.withValues(alpha: 0.3), // track when OFF
+
+            activeColor: toggleColor,                         // Thumb when ON
+            activeTrackColor: toggleColor.withOpacity(0.4),   // Track when ON
+            inactiveThumbColor: toggleColor,                  // Thumb when OFF
+            inactiveTrackColor: toggleColor.withOpacity(0.3), // Track when OFF
+
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),
         ),
-        Icon(Icons.nightlight_round, color: isDarkMode ? colors.links : colors.border),
+        Icon(Icons.nightlight_round, size: 20, color: isDarkMode ? colors.links : colors.border),
       ],
     );
   }

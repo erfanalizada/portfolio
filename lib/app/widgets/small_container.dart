@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/enums/yellow_button_icon_position_enum.dart';
 import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/widgets/inside_widget_hover_effect.dart';
 import 'package:portfolio/app/widgets/yellow_button_widget.dart';
 
 class SmallContainer extends StatelessWidget {
@@ -21,7 +20,10 @@ class SmallContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 300,
+      constraints: const BoxConstraints(
+        maxWidth: 300,
+        minWidth: 0,
+      ),
       height: 400,
       decoration: BoxDecoration(
         color: colors.secondary,
@@ -34,11 +36,10 @@ class SmallContainer extends StatelessWidget {
           final imageHeight = constraints.maxHeight * 0.3;
 
           return Column(
-            mainAxisAlignment: MainAxisAlignment.start, // 👈 Start from top
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 16), // Add a little top margin
-              // Title
+              const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
@@ -51,10 +52,7 @@ class SmallContainer extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
               ),
-
               const SizedBox(height: 10),
-
-              // Image
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
@@ -70,10 +68,7 @@ class SmallContainer extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 14),
-
-              // Body text
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Text(
@@ -86,22 +81,17 @@ class SmallContainer extends StatelessWidget {
                   ),
                 ),
               ),
-
               const SizedBox(height: 10),
-
-              HoverEffectWrapper(
-                scaleFactor: 1.02,
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 17),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: YellowButtonWidget(
-                      buttonText: 'Read more',
-                      callback: () {},
-                      colors: colors,
-                      icon: const Icon(Icons.arrow_forward_ios),
-                      iconPosition: IconPosition.right,
-                    ),
+              Padding(
+                padding: const EdgeInsets.only(right: 17),
+                child: Align(
+                  alignment: Alignment.centerRight,
+                  child: YellowButtonWidget(
+                    buttonText: 'Read more',
+                    callback: () {},
+                    colors: colors,
+                    icon: const Icon(Icons.arrow_forward_ios),
+                    iconPosition: IconPosition.right,
                   ),
                 ),
               ),
