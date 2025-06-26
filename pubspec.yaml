@@ -65,11 +65,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+     - assets/theme_changer.png
+     - assets/time_picker.png
+     - assets/youtube_pub.png
      - assets/pic.png
      - assets/nl_logo.png
      - assets/flutter_logo.png
      - assets/react_logo.png
      - assets/community.png
+     - assets/playing_soccer.png
      - assets/project.png
      - assets/java_logo.png
      - assets/resize_animation.json

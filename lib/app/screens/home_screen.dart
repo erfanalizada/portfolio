@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/interfaces/i_text_builder.dart';
+import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
+import 'package:portfolio/app/managers/text_provider_manager.dart';
 import 'package:portfolio/app/models/color_model.dart';
+import 'package:portfolio/app/models/image_card_model.dart';
 import 'package:portfolio/app/providers/managers/manager_providers.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
 import 'package:portfolio/app/widgets/glow_wrapper.dart';
+import 'package:portfolio/app/widgets/image_cards_widget.dart';
 import 'package:portfolio/app/widgets/responsive_grid.dart';
 import 'package:portfolio/app/widgets/small_container.dart';
 import 'package:portfolio/app/widgets/toggle_widget.dart';
 import 'package:portfolio/app/widgets/hero_widget.dart';
+import 'package:portfolio/app/widgets/youtube_hero.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -17,15 +22,9 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final AppColors colors = ref.watch(appColorsProvider);
     final ITextBuilder generateText = ref.watch(textProvider);
+    final ITextProviderManager cardText = ref.watch(cardTextProvider);
 
-    final Map<String, List<String>> techStack = {
-      'Technologies that has been used': [
-        'Flutter using dart',
-        'Riverpod flutter package',
-        'Firebase realtime database',
-        'Dart which belongs to flutter',
-      ],
-    };
+    final card = ImageCard('assets/playing_soccer.png', 'Playing Soccer');
 
     return Scaffold(
       backgroundColor: colors.primary,
@@ -91,9 +90,11 @@ class HomeScreen extends ConsumerWidget {
               hoverSpread: 2,
               radius: 25,
               child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
+                text: generateText.buildUnorderedList(
+                  cardText.flutterThemeChangerText(),
+                ),
+                title: 'Pub.dev',
+                imagePath: 'assets/theme_changer.png',
                 colors: colors,
               ),
             ),
@@ -106,67 +107,19 @@ class HomeScreen extends ConsumerWidget {
               hoverSpread: 2,
               radius: 25,
               child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
+                title: "Pub.dev",
+                text: generateText.buildUnorderedList(
+                  cardText.customTimePickerText(),
+                ),
+                imagePath: 'assets/time_picker.png',
                 colors: colors,
               ),
             ),
+            const SizedBox(width: double.infinity, height: 0),
 
+            YoutubeHeroWidget(colors: colors),
+            ImageCardsWidget(card: card, colors: colors),
             const SizedBox(width: double.infinity, height: 0),
-            GlowWrapper(
-              color: colors.links,
-              intensity: 2,
-              hoverIntensity: 25,
-              hoverSpread: 2,
-              radius: 25,
-              child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
-                colors: colors,
-              ),
-            ),
-            GlowWrapper(
-              color: colors.links,
-              intensity: 2,
-              hoverIntensity: 25,
-              hoverSpread: 2,
-              radius: 25,
-              child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
-                colors: colors,
-              ),
-            ),
-            GlowWrapper(
-              color: colors.links,
-              intensity: 2,
-              hoverIntensity: 25,
-              hoverSpread: 2,
-              radius: 25,
-              child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
-                colors: colors,
-              ),
-            ),
-            const SizedBox(width: double.infinity, height: 0),
-            GlowWrapper(
-              color: colors.links,
-              intensity: 2,
-              hoverIntensity: 25,
-              hoverSpread: 2,
-              radius: 25,
-              child: SmallContainer(
-                title: "Technologies Used",
-                text: generateText.buildUnorderedList(techStack),
-                imagePath: 'assets/pic.png',
-                colors: colors,
-              ),
-            ),
           ],
         ),
       ),

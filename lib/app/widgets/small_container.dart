@@ -4,14 +4,14 @@ import 'package:portfolio/app/models/color_model.dart';
 import 'package:portfolio/app/widgets/yellow_button_widget.dart';
 
 class SmallContainer extends StatelessWidget {
-  final String title;
+  final String? title;
   final String text;
   final String imagePath;
   final AppColors colors;
 
   const SmallContainer({
     super.key,
-    required this.title,
+    this.title,
     required this.text,
     required this.imagePath,
     required this.colors,
@@ -43,7 +43,7 @@ class SmallContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
-                  title,
+                  title!,
                   style: TextStyle(
                     color: colors.text,
                     fontSize: 20,
@@ -59,11 +59,11 @@ class SmallContainer extends StatelessWidget {
                   width: imageWidth,
                   height: imageHeight,
                   decoration: BoxDecoration(
-                    border: Border.all(color: colors.border, width: 1),
-                    borderRadius: BorderRadius.circular(25),
+                    border: Border.all(color: colors.border, width: 2),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(25),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.asset(imagePath, fit: BoxFit.cover),
                   ),
                 ),
@@ -79,20 +79,17 @@ class SmallContainer extends StatelessWidget {
                     height: 1.4,
                     fontFamily: 'KohSantepheap',
                   ),
+                  textAlign: TextAlign.left,
                 ),
               ),
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.only(right: 17),
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: YellowButtonWidget(
-                    buttonText: 'Read more',
-                    callback: () {},
-                    colors: colors,
-                    icon: const Icon(Icons.arrow_forward_ios),
-                    iconPosition: IconPosition.right,
-                  ),
+              Center(
+                child: YellowButtonWidget(
+                  buttonText: 'Read more',
+                  callback: () {},
+                  colors: colors,
+                  icon: const Icon(Icons.arrow_forward_ios),
+                  iconPosition: IconPosition.right,
                 ),
               ),
             ],
