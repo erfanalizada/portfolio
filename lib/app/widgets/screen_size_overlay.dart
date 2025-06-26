@@ -12,7 +12,7 @@ class ScreenSizeOverlay extends StatelessWidget {
   const ScreenSizeOverlay({
     super.key,
     required this.screen,
-    this.minWidth = 750,
+    this.minWidth = 780,
     required this.colors,
   });
 

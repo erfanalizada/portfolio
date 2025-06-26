@@ -63,12 +63,17 @@ class HeroWidget extends ConsumerWidget {
                       children: [
                         // Title + Logo
                         Padding(
-                          padding: const EdgeInsets.only(top: 16.0, left: 8.0, right: 8.0),
+                          padding: const EdgeInsets.only(
+                            top: 16.0,
+                            left: 8.0,
+                            right: 8.0,
+                          ),
                           child: Column(
                             children: [
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Expanded(
                                     child: Text(
@@ -82,7 +87,10 @@ class HeroWidget extends ConsumerWidget {
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.only(top: 4.0, right: 16.0),
+                                    padding: const EdgeInsets.only(
+                                      top: 4.0,
+                                      right: 16.0,
+                                    ),
                                     child: Image.asset(
                                       'assets/nl_logo.png',
                                       height: 45,
@@ -141,31 +149,48 @@ class HeroWidget extends ConsumerWidget {
                                 ),
                               ),
                               SizedBox(height: 80),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Image.asset('assets/flutter_logo.png', height: 35),
-                                      SizedBox(width: 16),
-                                      Image.asset('assets/react_logo.png', height: 35),
-                                      SizedBox(width: 16),
-                                      Image.asset('assets/java_logo.png', height: 35),
-                                    ],
-                                  ),
-                              
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 12.0),
-                                    child: YellowButtonWidget(
-                                      buttonText: "Read more",
-                                      callback: () {},
-                                      icon: const Icon(Icons.arrow_forward_ios),
-                                      iconPosition: IconPosition.right,
-                                      colors: colors,
+                              Center(
+                                child: Wrap(
+                                  alignment: WrapAlignment.spaceBetween,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: 16,
+                                  runSpacing: 16,
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Image.asset(
+                                          'assets/flutter_logo.png',
+                                          height: 35,
+                                        ),
+                                        SizedBox(width: 16),
+                                        Image.asset(
+                                          'assets/react_logo.png',
+                                          height: 35,
+                                        ),
+                                        SizedBox(width: 16),
+                                        Image.asset(
+                                          'assets/java_logo.png',
+                                          height: 35,
+                                        ),
+                                      ],
                                     ),
-                                  ),
-                                ],
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        right: 12.0,
+                                      ),
+                                      child: YellowButtonWidget(
+                                        buttonText: "Read more",
+                                        callback: () {},
+                                        icon: const Icon(
+                                          Icons.arrow_forward_ios,
+                                        ),
+                                        iconPosition: IconPosition.right,
+                                        colors: colors,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),

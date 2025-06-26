@@ -39,6 +39,7 @@ dependencies:
   shared_preferences: ^2.5.3
   lottie: ^3.3.1
   web: ^1.1.1
+  flutter_staggered_animations: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +69,8 @@ flutter:
      - assets/nl_logo.png
      - assets/flutter_logo.png
      - assets/react_logo.png
+     - assets/community.png
+     - assets/project.png
      - assets/java_logo.png
      - assets/resize_animation.json
      - assets/personal_pic.png
