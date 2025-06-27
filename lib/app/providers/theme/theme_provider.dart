@@ -28,7 +28,7 @@ const darkAppColors = AppColors(
   buttonText: Color(0xFF02141D),                    // Dark on gold
   links: Color(0xFF55C3E1),                         // Light blue links
   border: Color(0xFF40565E),                        // Dark grey-blue borders
-  appbar: Color(0xFF001E29),                        // Slightly lighter than primary for hierarchy
+  appbar: Color.fromARGB(255, 0, 38, 52),                        // Slightly lighter than primary for hierarchy
 );
 
 final appColorsProvider = Provider<AppColors>((ref) {

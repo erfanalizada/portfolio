@@ -5,6 +5,7 @@ abstract class ITextProviderManager {
    Map<String, List<String>> youtubeDonwloaderText();
    Map<String, List<String>> cyberSecurityText();
    Map<String, List<String>> aiForSocietyText();
+   Map<String, List<String>> languagesSpoken();
 
 
 }

@@ -13,3 +13,5 @@ final textProvider= Provider<ITextBuilder>((ref){
 final cardTextProvider= Provider<ITextProviderManager>((ref){
  return TextProviderManager();
 });
+
+final screenToggleProvider = StateProvider<int>((ref) => 0);

@@ -16,87 +16,78 @@ class YoutubeHeroWidget extends ConsumerWidget {
     final ITextProviderManager providedText = ref.watch(cardTextProvider);
     final ITextBuilder textBuilder = ref.watch(textProvider);
 
-    return Center(
-      child: SizedBox(
-        width: 700,
-        height: 275, // 75px taller as requested
-        child: Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: colors.secondary,
-            borderRadius: BorderRadius.circular(25),
-            border: Border.all(color: colors.border, width: 2),
-          ),
-          child: Row(
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: colors.border, width: 2),
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    'assets/youtube_pub.png',
-                    width: 400,
-                    height: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+    return SizedBox(
+      width: 700,
+      height: 275,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: colors.secondary,
+          borderRadius: BorderRadius.circular(25),
+          border: Border.all(color: colors.border, width: 2),
+        ),
+        child: Row(
+          children: [
+            // Left: Wider Image
+            Container(
+              width: 380, // Increased image width
+              decoration: BoxDecoration(
+                border: Border.all(color: colors.border, width: 2),
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/youtube_pub.png',
+                  height: double.infinity,
+                  fit: BoxFit.cover,
                 ),
               ),
+            ),
 
-              // Left: Plugin Screenshot
-              const SizedBox(width: 16),
+            const SizedBox(width: 12), // Slightly smaller gap
 
-              // Right: Text and Button
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 6),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                textBuilder.buildUnorderedList(
-                                  providedText.youtubeDonwloaderText(),
-                                ),
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: colors.text,
-                                ),
-                              ),
-                            ),
-                          ],
+            // Right: Text + Button
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Scrollable text block
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Text(
+                          textBuilder.buildUnorderedList(
+                            providedText.youtubeDonwloaderText(),
+                          ),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: colors.text,
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 5),
+                    ),
 
-                      // Right-aligned Button
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          YellowButtonWidget(
-                            buttonText: "Read more",
-                            callback: () {
-                              // Add navigation or action here
-                            },
-                            icon: const Icon(Icons.arrow_forward_ios),
-                            iconPosition: IconPosition.right,
-                            colors: colors,
-                          ),
-                        ],
+                    // Button aligned bottom right
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: YellowButtonWidget(
+                        buttonText: "Read more",
+                        callback: () {
+                          // Add action here
+                        },
+                        icon: const Icon(Icons.arrow_forward_ios),
+                        iconPosition: IconPosition.right,
+                        colors: colors,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

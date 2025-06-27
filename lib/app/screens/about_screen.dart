@@ -4,13 +4,11 @@ import 'package:portfolio/app/enums/yellow_button_icon_position_enum.dart';
 import 'package:portfolio/app/interfaces/i_text_builder.dart';
 import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
 import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/models/image_card_model.dart';
 import 'package:portfolio/app/providers/managers/manager_providers.dart';
-import 'package:portfolio/app/providers/managers/navigation_provider.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
-import 'package:portfolio/app/screens/about_screen.dart';
+import 'package:portfolio/app/screens/home_screen.dart';
+import 'package:portfolio/app/widgets/about_screen/about_info_card.dart';
 import 'package:portfolio/app/widgets/glow_wrapper.dart';
-import 'package:portfolio/app/widgets/image_cards_widget.dart';
 import 'package:portfolio/app/widgets/responsive_grid.dart';
 import 'package:portfolio/app/widgets/small_container.dart';
 import 'package:portfolio/app/widgets/toggle_widget.dart';
@@ -18,8 +16,8 @@ import 'package:portfolio/app/widgets/hero_widget.dart';
 import 'package:portfolio/app/widgets/yellow_button_widget.dart';
 import 'package:portfolio/app/widgets/youtube_hero.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+class AboutScreen extends ConsumerWidget {
+  const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -38,10 +36,10 @@ class HomeScreen extends ConsumerWidget {
         // 🔒 Flatten it visually
         // these three lines above ensure no appbar color change when scrolling
         title: YellowButtonWidget(
-          buttonText: 'Enter About',
+          buttonText: 'Enter Home',
           callback: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const AboutScreen()),
+             Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
             );
           },
           colors: colors,

@@ -6,11 +6,11 @@ class ResponsiveGrid extends StatelessWidget {
   final double runSpacing;
 
   const ResponsiveGrid({
-    Key? key,
+    super.key,
     required this.children,
     this.spacing = 16,
     this.runSpacing = 16,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

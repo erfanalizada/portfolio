@@ -26,9 +26,9 @@ class ToggleWidget extends ConsumerWidget {
             onChanged: (_) => modeNotifier.toggle(),
 
             activeColor: toggleColor,                         // Thumb when ON
-            activeTrackColor: toggleColor.withOpacity(0.4),   // Track when ON
+            activeTrackColor: toggleColor.withValues(alpha:0.4),   // Track when ON
             inactiveThumbColor: toggleColor,                  // Thumb when OFF
-            inactiveTrackColor: toggleColor.withOpacity(0.3), // Track when OFF
+            inactiveTrackColor: toggleColor.withValues(alpha:0.3), // Track when OFF
 
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           ),

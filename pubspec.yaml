@@ -67,7 +67,12 @@ flutter:
   assets:
      - assets/theme_changer.png
      - assets/time_picker.png
+     - assets/cyber.png
+     - assets/book.png
+     - assets/selfie.png
+
      - assets/youtube_pub.png
+     - assets/ai_for_society.jpg  
      - assets/pic.png
      - assets/nl_logo.png
      - assets/flutter_logo.png

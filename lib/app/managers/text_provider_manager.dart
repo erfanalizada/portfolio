@@ -35,10 +35,9 @@ class TextProviderManager implements ITextProviderManager{
   @override
   Map<String, List<String>> aiForSocietyText() {
   return(  {
-      'Ai fundumnetals and impact on society': [
-        'Awarness on impact of ai tools on society',
-        'Learned how to train a basic model \n  for student grade prediction',
-        'Learned basic data analyzation',
+      'Ai fundumnetals and impact on society: ': [
+        'Awarness on impact of ai tools on\n   society',
+        'Learned how to train a basic model',
       ],
     });
   }
@@ -49,7 +48,20 @@ class TextProviderManager implements ITextProviderManager{
       'Cyber Security Specialization:': [
         'Learned about OWASP vunrebilities',
         'Practiced hacking tricks on DVWA',
-        'Learned what counts as a risk and\n   how to take care of them while\n   developing a product',
+        'learned how to avoid code breaches',
+        'Created BOK(process documentation)'
+      ],
+    });
+  }
+  
+  @override
+  Map<String, List<String>> languagesSpoken() {
+    return(  {
+      'Languages i speak:': [
+        'Dutch(Fluent)',
+        'English(Fluent)',
+        'Persian(Native)',
+        'Dari(Native)'
       ],
     });
   }
