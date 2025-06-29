@@ -27,126 +27,195 @@ class AboutInfoCard extends ConsumerWidget {
           final imageWidth = constraints.maxWidth * 0.2;
           final imageHeight = constraints.maxHeight * 0.4;
 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 10,
-                  vertical: 10,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          return Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // HEADER
+                Row(
                   children: [
-                    // Header Row
-                    Row(
+                    Text(
+                      "About me",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'KohSantepheap',
+                        color: colors.title,
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Image.asset(
+                        'assets/nl_logo.png',
+                        height: 45,
+                        width: 45,
+                      ),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 15),
+
+                // MAIN CONTENT
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "About me",
-                          style: TextStyle(
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'KohSantepheap',
-                            color: colors.title,
+                        // LEFT COLUMN
+                        Flexible(
+                          child: buildColumnContent(
+                            imageWidth,
+                            imageHeight,
+                            textBuilder,
+                            cardtextProvider,
                           ),
                         ),
-                        const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
-                          child: Image.asset(
-                            'assets/nl_logo.png',
-                            height: 45,
-                            width: 45,
+
+                        const SizedBox(width: 20),
+
+                        // RIGHT COLUMN
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(maxWidth: 400),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              // CURIOUS ENGINEER
+                              Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                spacing: 8,
+                                children: [
+                                  Text(
+                                    "Curious Engineer",
+                                    style: TextStyle(
+                                      color: colors.title,
+                                      fontSize: 25,
+                                      fontFamily: 'KohSantepheap',
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    'assets/micro.png',
+                                    height: 45,
+                                    width: 45,
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(height: 10),
+
+                              // PARAGRAPH 1
+                              SizedBox(
+                                width: 450,
+                                child: Text(
+                                  'A curious problem-solver & Flutter enthusiast who loves crafting seamless applications regardless of its use case or difficulty. Always open to learn and expand my knowledge.',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: colors.text,
+                                    fontFamily: 'KohSantepheap',
+                                  ),
+                                ),
+                              ),
+
+                              const SizedBox(height: 20),
+
+                              // MY MISSION
+                              Wrap(
+                                crossAxisAlignment: WrapCrossAlignment.center,
+                                spacing: 8,
+                                children: [
+                                  Text(
+                                    "My Mission",
+                                    style: TextStyle(
+                                      color: colors.title,
+                                      fontSize: 25,
+                                      fontFamily: 'KohSantepheap',
+                                    ),
+                                  ),
+                                  Image.asset(
+                                    'assets/target.png',
+                                    height: 45,
+                                    width: 45,
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(height: 10),
+
+                              // PARAGRAPH 2
+                              SizedBox(
+                                width: 450,
+                                child: Text(
+                                  'I love working on projects that enrich people’s lives and inspire them to engage actively with themselves and their communities, encouraging them to be creators rather than just consumers.',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: colors.text,
+                                    fontFamily: 'KohSantepheap',
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],
                     ),
-
-                    const SizedBox(height: 15),
-
-                    // Image Row
-                    Container(
-                      width: imageWidth,
-                      height: imageHeight,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      child: Image.asset('assets/selfie.png', fit: BoxFit.fill),
-                    ),
-
-                    const SizedBox(height: 20),
-
-                    // Languages Spoken
-                    Text(
-                      textBuilder.buildUnorderedList(
-                        cardtextProvider.languagesSpoken(),
-                      ),
-                      style: TextStyle(
-                        color: colors.title,
-                        fontSize: 14,
-                        fontFamily: 'KohSantepheap',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-
-                    const SizedBox(height: 2),
-
-                    // Currently Learning
-                    Text(
-                      'Currently learning\nArabic as well',
-                      style: TextStyle(
-                        color: colors.text,
-                        fontSize: 16,
-                        fontFamily: 'KohSantepheap',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-
-                    SizedBox(width: 20), // spacing between columns
-                  ],
+                  ),
                 ),
-              ),
-
-              
-
-
-
-
-
-            ],
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+              ],
+            ),
           );
         },
       ),
+    );
+  }
+
+  Widget buildColumnContent(
+    double imageWidth,
+    double imageHeight,
+    ITextBuilder textBuilder,
+    ITextProviderManager cardtextProvider,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // IMAGE
+        Container(
+          width: imageWidth,
+          height: imageHeight,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+          child: Image.asset('assets/selfie.png', fit: BoxFit.fill),
+        ),
+        const SizedBox(height: 20),
+
+        // LANGUAGES
+        Text(
+          textBuilder.buildUnorderedList(cardtextProvider.languagesSpoken()),
+          softWrap: true,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: colors.title,
+            fontSize: 14,
+            fontFamily: 'KohSantepheap',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        // CURRENTLY LEARNING
+        Text(
+          'Currently learning\nArabic as well',
+          softWrap: true,
+          textAlign: TextAlign.justify,
+          style: TextStyle(
+            color: colors.text,
+            fontSize: 16,
+            fontFamily: 'KohSantepheap',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+      ],
     );
   }
 }

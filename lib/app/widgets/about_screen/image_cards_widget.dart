@@ -5,11 +5,15 @@ import 'package:portfolio/app/models/image_card_model.dart';
 class ImageCardsWidget extends StatelessWidget {
   final ImageCard card;
   final AppColors colors;
+  final double cardWidth;
+  final double cardHeight;
 
   const ImageCardsWidget({
     super.key,
     required this.card,
     required this.colors,
+    this.cardWidth = 200,
+    this.cardHeight = 300, // Default height
   });
 
   @override
@@ -18,11 +22,8 @@ class ImageCardsWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          constraints: const BoxConstraints(
-            maxWidth: 300,
-            maxHeight: 400,
-            minWidth: 0,
-          ),
+          width: cardWidth,
+          height: cardHeight,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
             border: Border.all(

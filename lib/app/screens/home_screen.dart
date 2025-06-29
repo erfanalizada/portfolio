@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/enums/yellow_button_icon_position_enum.dart';
+import 'package:portfolio/app/interfaces/i_navigation_manager.dart';
 import 'package:portfolio/app/interfaces/i_text_builder.dart';
 import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
 import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/models/image_card_model.dart';
 import 'package:portfolio/app/providers/managers/manager_providers.dart';
-import 'package:portfolio/app/providers/managers/navigation_provider.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
 import 'package:portfolio/app/screens/about_screen.dart';
 import 'package:portfolio/app/widgets/glow_wrapper.dart';
-import 'package:portfolio/app/widgets/image_cards_widget.dart';
 import 'package:portfolio/app/widgets/responsive_grid.dart';
+import 'package:portfolio/app/widgets/screen_size_overlay.dart';
 import 'package:portfolio/app/widgets/small_container.dart';
 import 'package:portfolio/app/widgets/toggle_widget.dart';
 import 'package:portfolio/app/widgets/hero_widget.dart';
@@ -26,6 +25,9 @@ class HomeScreen extends ConsumerWidget {
     final AppColors colors = ref.watch(appColorsProvider);
     final ITextBuilder generateText = ref.watch(textProvider);
     final ITextProviderManager cardText = ref.watch(cardTextProvider);
+    final INavigationManager navigationManager = ref.watch(
+      navigationManagerProvider,
+    );
 
     return Scaffold(
       backgroundColor: colors.primary,
@@ -40,8 +42,9 @@ class HomeScreen extends ConsumerWidget {
         title: YellowButtonWidget(
           buttonText: 'Enter About',
           callback: () {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => const AboutScreen()),
+            navigationManager.navigateWithSlideFromLeft(
+              context,
+               ScreenSizeOverlay(screen: AboutScreen(), colors: colors),
             );
           },
           colors: colors,
@@ -157,7 +160,7 @@ class HomeScreen extends ConsumerWidget {
                     Image.asset('assets/book.png', height: 35),
                     const SizedBox(width: 8),
                     Text(
-                      'Other Courses',
+                      'Other projects',
                       style: TextStyle(
                         color: colors.title,
                         fontSize: 22,
@@ -179,11 +182,11 @@ class HomeScreen extends ConsumerWidget {
             hoverSpread: 2,
             radius: 25,
             child: SmallContainer(
-              title: "Ai for Society",
+              title: "WildlifeNL Internship",
               text: generateText.buildUnorderedList(
-                cardText.aiForSocietyText(),
+                cardText.wildlifenlInternshipDescription(),
               ),
-              imagePath: 'assets/ai_for_society.jpg',
+              imagePath: 'assets/wildrapport_loc.jpg',
               colors: colors,
             ),
           ),

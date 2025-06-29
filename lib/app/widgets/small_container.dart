@@ -24,7 +24,7 @@ class SmallContainer extends StatelessWidget {
         maxWidth: 300,
         minWidth: 0,
       ),
-      height: 400,
+      height: 420,
       decoration: BoxDecoration(
         color: colors.secondary,
         borderRadius: BorderRadius.circular(25),

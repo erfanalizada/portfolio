@@ -70,6 +70,22 @@ flutter:
      - assets/cyber.png
      - assets/book.png
      - assets/selfie.png
+     - assets/micro.png
+     - assets/target.png
+     - assets/wildrapport_loc.jpg
+     - assets/wildrapport_loc_details.jpg
+     - assets/wildrapport_home.jpg
+     - assets/wildrapport_rep.jpg
+
+     - assets/pub.png
+     - assets/barb.png
+     - assets/nature.png
+     - assets/reading_book.png
+     - assets/github.png
+     - assets/puzzle.png
+     - assets/man.png
+     - assets/language_icons.png
+     - assets/frameworks.png
 
      - assets/youtube_pub.png
      - assets/ai_for_society.jpg  

@@ -66,6 +66,42 @@ class TextProviderManager implements ITextProviderManager{
     });
   }
 
+    @override
+  Map<String, List<String>> programmingLanguageSkills() {
+    return(  {
+      'Programming languages worked with:': [
+        'Flutter',
+        'C#',
+        'Java & Jetpack compose',
+        'React',
+        'HTML5 & CSS3'
+      ],
+    });
+  }
+
+    @override
+  Map<String, List<String>> otherSkills() {
+    return(  {
+      'Other Skills:': [
+        'MySQL & MSSQL',
+        'GitHub & Git-Lab',
+        'Figma',
+        'Agile/Scrum (Jira)',
+        'Firebase',
+        'AI Command prompting (faster\n development process) ',
+      ],
+    });
+  }
+   @override
+  Map<String, List<String>> wildlifenlInternshipDescription() {
+  return(  {
+      'A user centered app using flutter: ': [
+        'Trailored to professional needs such\n   as researchers & ...',
+        'Focused on reporting and location\n   tracking',
+      ],
+    });
+  }
+
 
   
 }
