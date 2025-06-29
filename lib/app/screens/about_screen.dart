@@ -146,7 +146,7 @@ class AboutScreen extends ConsumerWidget {
                   ],
                 ),
               ),
-            ],
+            ],//
           ),
           const SizedBox(width: double.infinity, height: 0),
           GlowWrapper(
