@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/providers/theme/theme_provider.dart';
 import 'package:portfolio/app/screens/about_screen.dart';
 import 'package:portfolio/app/screens/home_screen.dart';
+import 'package:portfolio/app/screens/loader_screen.dart';
 import 'package:portfolio/app/screens/test_screen.dart';
 import 'package:portfolio/app/widgets/screen_size_overlay.dart';
 
@@ -35,7 +36,7 @@ class MyApp extends ConsumerWidget {
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: isDarkmode ? ThemeMode.dark : ThemeMode.light,
-          home: ScreenSizeOverlay(screen: HomeScreen(key: key), colors: getColors),
+          home: LoaderScreen(colors: getColors),
         );
       },
     );
