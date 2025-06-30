@@ -1,7 +1,8 @@
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/providers/theme/theme_saver_class.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/app/providers/theme/theme_saver_class.dart';
-import 'package:portfolio/app/models/color_model.dart';
+
 
 final darkModeProvider = AsyncNotifierProvider<ModeNotifier, bool>(ModeNotifier.new);
 

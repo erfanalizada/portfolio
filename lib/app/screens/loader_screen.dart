@@ -1,8 +1,9 @@
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/screens/home_screen.dart';
+import 'package:erfan_portfolio/app/widgets/screen_size_overlay.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/screens/home_screen.dart';
-import 'package:portfolio/app/widgets/screen_size_overlay.dart';
+
 
 class LoaderScreen extends StatefulWidget {
   final AppColors colors;

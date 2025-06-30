@@ -1,4 +1,5 @@
-import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
+
+import 'package:erfan_portfolio/app/interfaces/i_text_provider_manager.dart';
 
 class TextProviderManager implements ITextProviderManager{
   @override

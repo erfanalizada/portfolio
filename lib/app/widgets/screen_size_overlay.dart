@@ -1,8 +1,9 @@
+import 'package:erfan_portfolio/app/helpers/web_fullscreen_helper.dart';
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/widgets/inside_widget_hover_effect.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:portfolio/app/helpers/web_fullscreen_helper.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/widgets/inside_widget_hover_effect.dart';
+
 
 class ScreenSizeOverlay extends StatelessWidget {
   final Widget screen;

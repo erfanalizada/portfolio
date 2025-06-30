@@ -1,9 +1,10 @@
+import 'package:erfan_portfolio/app/interfaces/i_text_builder.dart';
+import 'package:erfan_portfolio/app/interfaces/i_text_provider_manager.dart';
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/providers/managers/manager_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/app/interfaces/i_text_builder.dart';
-import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/providers/managers/manager_providers.dart';
+
 
 class AboutInfoCard extends ConsumerWidget {
   final AppColors colors;

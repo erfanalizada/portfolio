@@ -1,6 +1,7 @@
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/models/image_card_model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/models/image_card_model.dart';
+
 
 class ImageCardsWidget extends StatelessWidget {
   final ImageCard card;

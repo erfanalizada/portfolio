@@ -1,6 +1,7 @@
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/widgets/glow_wrapper.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/widgets/glow_wrapper.dart';
+
 
 class SkillsBoxWidget extends StatelessWidget {
   final String leftTitle;

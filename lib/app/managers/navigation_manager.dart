@@ -1,5 +1,5 @@
+import 'package:erfan_portfolio/app/interfaces/i_navigation_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio/app/interfaces/i_navigation_manager.dart';
 
 class NavigationManager implements INavigationManager{
 

@@ -1,22 +1,23 @@
+import 'package:erfan_portfolio/app/enums/yellow_button_icon_position_enum.dart';
+import 'package:erfan_portfolio/app/interfaces/i_navigation_manager.dart';
+import 'package:erfan_portfolio/app/interfaces/i_text_builder.dart';
+import 'package:erfan_portfolio/app/interfaces/i_text_provider_manager.dart';
+import 'package:erfan_portfolio/app/models/color_model.dart';
+import 'package:erfan_portfolio/app/providers/managers/manager_providers.dart';
+import 'package:erfan_portfolio/app/providers/theme/theme_provider.dart';
+import 'package:erfan_portfolio/app/screens/home_screen.dart';
+import 'package:erfan_portfolio/app/widgets/about_screen/about_info_card.dart';
+import 'package:erfan_portfolio/app/widgets/about_screen/image_container_show.dart';
+import 'package:erfan_portfolio/app/widgets/about_screen/skills_box_widget.dart';
+import 'package:erfan_portfolio/app/widgets/glow_wrapper.dart';
+import 'package:erfan_portfolio/app/widgets/responsive_grid.dart';
+import 'package:erfan_portfolio/app/widgets/screen_size_overlay.dart';
+import 'package:erfan_portfolio/app/widgets/small_container.dart';
+import 'package:erfan_portfolio/app/widgets/toggle_widget.dart';
+import 'package:erfan_portfolio/app/widgets/yellow_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/app/enums/yellow_button_icon_position_enum.dart';
-import 'package:portfolio/app/interfaces/i_navigation_manager.dart';
-import 'package:portfolio/app/interfaces/i_text_builder.dart';
-import 'package:portfolio/app/interfaces/i_text_provider_manager.dart';
-import 'package:portfolio/app/models/color_model.dart';
-import 'package:portfolio/app/providers/managers/manager_providers.dart';
-import 'package:portfolio/app/providers/theme/theme_provider.dart';
-import 'package:portfolio/app/screens/home_screen.dart';
-import 'package:portfolio/app/widgets/about_screen/about_info_card.dart';
-import 'package:portfolio/app/widgets/about_screen/image_container_show.dart';
-import 'package:portfolio/app/widgets/about_screen/skills_box_widget.dart';
-import 'package:portfolio/app/widgets/glow_wrapper.dart';
-import 'package:portfolio/app/widgets/responsive_grid.dart';
-import 'package:portfolio/app/widgets/screen_size_overlay.dart';
-import 'package:portfolio/app/widgets/small_container.dart';
-import 'package:portfolio/app/widgets/toggle_widget.dart';
-import 'package:portfolio/app/widgets/yellow_button_widget.dart';
+
 
 class AboutScreen extends ConsumerWidget {
   const AboutScreen({super.key});
