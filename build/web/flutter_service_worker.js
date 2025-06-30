@@ -3,9 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {".vercel/project.json": "19a1fc814e5e33fc2c40ef35c55151af",
-".vercel/README.txt": "2b13c79d37d6ed82a3255b83b6815034",
-"assets/AssetManifest.bin": "826bfd50a5658ddcab5b8ba6b2dbf56f",
+const RESOURCES = {"assets/AssetManifest.bin": "826bfd50a5658ddcab5b8ba6b2dbf56f",
 "assets/AssetManifest.bin.json": "18b9170cf933d1d197938d0d248b49ed",
 "assets/AssetManifest.json": "57222b830feabaccedc7dd77f74d2ed5",
 "assets/assets/ai_for_society.jpg": "529c23ef7c09ad362425d796e2585f47",
@@ -60,7 +58,7 @@ const RESOURCES = {".vercel/project.json": "19a1fc814e5e33fc2c40ef35c55151af",
 "canvaskit/skwasm.wasm": "39dd80367a4e71582d234948adc521c0",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "83d881c1dbb6d6bcd6b42e274605b69c",
-"flutter_bootstrap.js": "316bf209498f1721e41e35187991fd8f",
+"flutter_bootstrap.js": "b5834add4bc7e09c5c6d53e117a4b417",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
