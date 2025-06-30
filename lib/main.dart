@@ -1,11 +1,8 @@
+import 'package:erfan_portfolio/app/providers/theme/theme_provider.dart';
+import 'package:erfan_portfolio/app/screens/loader_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:portfolio/app/providers/theme/theme_provider.dart';
-import 'package:portfolio/app/screens/about_screen.dart';
-import 'package:portfolio/app/screens/home_screen.dart';
-import 'package:portfolio/app/screens/loader_screen.dart';
-import 'package:portfolio/app/screens/test_screen.dart';
-import 'package:portfolio/app/widgets/screen_size_overlay.dart';
+
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -32,11 +29,14 @@ class MyApp extends ConsumerWidget {
       ),
       data: (isDarkmode) {
         return MaterialApp(
-          title: 'Flutter Demo',
+          title: "Erfan Alizada's portfolio",
+          debugShowCheckedModeBanner: false,
           theme: ThemeData.light(),
           darkTheme: ThemeData.dark(),
           themeMode: isDarkmode ? ThemeMode.dark : ThemeMode.light,
           home: LoaderScreen(colors: getColors),
+          
+
         );
       },
     );
