@@ -98,6 +98,7 @@ flutter:
      - assets/project.png
      - assets/java_logo.png
      - assets/resize_animation.json
+     - assets/loader.json
      - assets/personal_pic.png
      - assets/fonts/KohSantepheap-Regular.ttf
      - assets/fonts/KohSantepheap-Bold.ttf

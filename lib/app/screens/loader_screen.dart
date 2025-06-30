@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:portfolio/app/models/color_model.dart';
 import 'package:portfolio/app/screens/home_screen.dart';
 import 'package:portfolio/app/widgets/screen_size_overlay.dart';
@@ -47,6 +48,8 @@ class _LoaderScreenState extends State<LoaderScreen> {
     'assets/project.png',
     'assets/java_logo.png',
     'assets/personal_pic.png',
+    'assets/resize_animation.json',
+    'assets/loader.json',
   ];
 
   @override
@@ -56,6 +59,8 @@ class _LoaderScreenState extends State<LoaderScreen> {
   }
 
   Future<void> _preloadCriticalAssets() async {
+    final start = DateTime.now();
+
     for (final asset in _criticalAssets) {
       try {
         await precacheImage(AssetImage(asset), context);
@@ -64,10 +69,11 @@ class _LoaderScreenState extends State<LoaderScreen> {
       }
     }
 
-    // Short pause for smoother UX (optional)
-    await Future.delayed(const Duration(milliseconds: 200));
+    final elapsed = DateTime.now().difference(start);
+    if (elapsed < const Duration(seconds: 2)) {
+      await Future.delayed(const Duration(seconds: 2) - elapsed);
+    }
 
-    // Navigate to HomeScreen
     if (mounted) {
       Navigator.pushReplacement(
         context,
@@ -79,7 +85,6 @@ class _LoaderScreenState extends State<LoaderScreen> {
         ),
       );
 
-      // Start lazy preload after first frame of HomeScreen
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _lazyPreloadAssets();
       });
@@ -88,15 +93,99 @@ class _LoaderScreenState extends State<LoaderScreen> {
 
   void _lazyPreloadAssets() {
     for (final asset in _nonCriticalAssets) {
-      precacheImage(AssetImage(asset), context);
+      if (asset.endsWith('.png') || asset.endsWith('.jpg')) {
+        precacheImage(AssetImage(asset), context);
+      } else if (asset.endsWith('.json')) {
+        AssetLottie(asset).load().catchError((e) {
+          debugPrint('Error preloading Lottie $asset: $e');
+          return null;
+        });
+      }
     }
+  }
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: widget.colors.secondary,
+    body: Center(
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Lottie.asset(
+            'assets/loader.json',
+            width: 600,
+            height: 600,
+            fit: BoxFit.contain,
+          ),
+          Positioned(
+            top: 80, // Adjust this value as needed
+            child: _AnimatedWelcomeText(colors: widget.colors),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+}
+
+class _AnimatedWelcomeText extends StatefulWidget {
+  final AppColors colors;
+  const _AnimatedWelcomeText({required this.colors});
+
+  @override
+  State<_AnimatedWelcomeText> createState() => _AnimatedWelcomeTextState();
+}
+
+class _AnimatedWelcomeTextState extends State<_AnimatedWelcomeText>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _opacity;
+  late Animation<double> _scale;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..forward();
+
+    _opacity = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeIn),
+    );
+
+    _scale = Tween<double>(begin: 0.8, end: 1.1).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutBack),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(), // Replace with Lottie if needed
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (_, __) => Opacity(
+        opacity: _opacity.value,
+        child: Transform.scale(
+          scale: _scale.value,
+         child: Text(
+  'Welcome',
+  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+        fontWeight: FontWeight.bold,
+        fontSize: 50,
+        fontFamily: 'KohSantepheap',
+        color: Colors.white, // ✅ Contrast against secondary background
+      ),
+),
+
+        ),
       ),
     );
   }
