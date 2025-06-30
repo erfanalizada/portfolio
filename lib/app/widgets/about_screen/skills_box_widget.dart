@@ -60,7 +60,7 @@ class SkillsBoxWidget extends StatelessWidget {
                       children: leftImageUrls.map((url) {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8.0),
-                          child: Image.network(url, height: 45),
+                          child: Image.asset(url, height: 45),
                         );
                       }).toList(),
                     ),
@@ -90,7 +90,7 @@ class SkillsBoxWidget extends StatelessWidget {
                       children: rightImageUrls.map((url) {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8.0),
-                          child: Image.network(url, height: 45),
+                          child: Image.asset(url, height: 45),
                         );
                       }).toList(),
                     ),
