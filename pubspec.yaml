@@ -87,6 +87,7 @@ flutter:
      - assets/language_icons.png
      - assets/frameworks.png
 
+     - assets/app_logo.png
      - assets/youtube_pub.png
      - assets/ai_for_society.jpg  
      - assets/pic.png
