@@ -9,6 +9,7 @@ class SmallContainer extends StatelessWidget {
   final String text;
   final String imagePath;
   final AppColors colors;
+  final VoidCallback callback;
 
   const SmallContainer({
     super.key,
@@ -16,6 +17,7 @@ class SmallContainer extends StatelessWidget {
     required this.text,
     required this.imagePath,
     required this.colors,
+    required this.callback
   });
 
   @override
@@ -87,7 +89,7 @@ class SmallContainer extends StatelessWidget {
               Center(
                 child: YellowButtonWidget(
                   buttonText: 'Read more',
-                  callback: () {},
+                  callback: callback,
                   colors: colors,
                   icon: const Icon(Icons.arrow_forward_ios),
                   iconPosition: IconPosition.right,

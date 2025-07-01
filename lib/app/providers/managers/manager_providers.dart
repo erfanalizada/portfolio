@@ -1,6 +1,8 @@
+import 'package:erfan_portfolio/app/interfaces/i_link_manager.dart';
 import 'package:erfan_portfolio/app/interfaces/i_navigation_manager.dart';
 import 'package:erfan_portfolio/app/interfaces/i_text_builder.dart';
 import 'package:erfan_portfolio/app/interfaces/i_text_provider_manager.dart';
+import 'package:erfan_portfolio/app/managers/link_manager.dart';
 import 'package:erfan_portfolio/app/managers/navigation_manager.dart';
 import 'package:erfan_portfolio/app/managers/text_builder_manager.dart';
 import 'package:erfan_portfolio/app/managers/text_provider_manager.dart';
@@ -21,3 +23,7 @@ return NavigationManager();
 
 });
 
+
+final linkManager= Provider<ILinkManager>((ref){
+  return LinkManager();
+});

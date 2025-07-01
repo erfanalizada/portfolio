@@ -1,5 +1,5 @@
 @JS()
-library web_fullscreen_helper;
+library;
 
 import 'package:web/web.dart' as web;
 import 'dart:js_interop';

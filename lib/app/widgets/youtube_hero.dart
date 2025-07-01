@@ -10,7 +10,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class YoutubeHeroWidget extends ConsumerWidget {
   final AppColors colors;
-  const YoutubeHeroWidget({super.key, required this.colors});
+  final VoidCallback callback;
+  const YoutubeHeroWidget({super.key, required this.colors, required this.callback});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -76,9 +77,7 @@ class YoutubeHeroWidget extends ConsumerWidget {
                       alignment: Alignment.bottomRight,
                       child: YellowButtonWidget(
                         buttonText: "Read more",
-                        callback: () {
-                          // Add action here
-                        },
+                        callback: callback,
                         icon: const Icon(Icons.arrow_forward_ios),
                         iconPosition: IconPosition.right,
                         colors: colors,

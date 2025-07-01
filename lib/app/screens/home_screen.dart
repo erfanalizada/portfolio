@@ -1,4 +1,5 @@
 import 'package:erfan_portfolio/app/enums/yellow_button_icon_position_enum.dart';
+import 'package:erfan_portfolio/app/interfaces/i_link_manager.dart';
 import 'package:erfan_portfolio/app/interfaces/i_navigation_manager.dart';
 import 'package:erfan_portfolio/app/interfaces/i_text_builder.dart';
 import 'package:erfan_portfolio/app/interfaces/i_text_provider_manager.dart';
@@ -29,6 +30,7 @@ class HomeScreen extends ConsumerWidget {
     final INavigationManager navigationManager = ref.watch(
       navigationManagerProvider,
     );
+    final ILinkManager linkProvider= ref.watch(linkManager);
 
     return Scaffold(
       backgroundColor: colors.primary,
@@ -112,6 +114,9 @@ class HomeScreen extends ConsumerWidget {
               text: generateText.buildUnorderedList(
                 cardText.flutterThemeChangerText(),
               ),
+              callback: (){
+                linkProvider.openExternalWebsite('https://pub.dev/packages/flutter_theme_changer_erfan');
+              },
               title: 'Pub.dev',
               imagePath: 'assets/theme_changer.png',
               colors: colors,
@@ -127,6 +132,9 @@ class HomeScreen extends ConsumerWidget {
             radius: 25,
             child: SmallContainer(
               title: "Pub.dev",
+              callback: (){
+                linkProvider.openExternalWebsite('https://pub.dev/packages/custom_time_picker_erfan');
+              },
               text: generateText.buildUnorderedList(
                 cardText.customTimePickerText(),
               ),
@@ -146,7 +154,7 @@ class HomeScreen extends ConsumerWidget {
                 hoverIntensity: 25,
                 hoverSpread: 2,
                 radius: 25,
-                child: YoutubeHeroWidget(colors: colors),
+                child: YoutubeHeroWidget(colors: colors, callback: (){linkProvider.openExternalWebsite('https://pub.dev/packages/youtube_muxer_2025');},),
               ),
 
               const SizedBox(height: 18), // spacing between image and label
@@ -184,6 +192,7 @@ class HomeScreen extends ConsumerWidget {
             radius: 25,
             child: SmallContainer(
               title: "WildlifeNL Internship",
+              callback: (){linkProvider.openExternalWebsite('https://portfolio.drieam.app/s/GuxUr36X/FPTCxVwvhDcuy4WqByAjfnom/collection/140956/evidence/1023320/versions/latest');},
               text: generateText.buildUnorderedList(
                 cardText.wildlifenlInternshipDescription(),
               ),
@@ -201,6 +210,9 @@ class HomeScreen extends ConsumerWidget {
             radius: 25,
             child: SmallContainer(
               title: "Cyber Security",
+              callback: (){
+                linkProvider.openExternalWebsite('https://portfolio.drieam.app/s/GuxUr36X/C6ry4apR2z3iGtw6LqNsCA63/collection/140958/evidence/1023322/versions/latest');
+              },
               text: generateText.buildUnorderedList(
                 cardText.cyberSecurityText(),
               ),

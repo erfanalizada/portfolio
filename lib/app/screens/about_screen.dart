@@ -158,6 +158,7 @@ class AboutScreen extends ConsumerWidget {
             radius: 25,
             child: SmallContainer(
               title: "Ai for Society",
+              callback: (){},
               text: generateText.buildUnorderedList(cardText.aiForSocietyText()),
               imagePath: 'assets/ai_for_society.jpg',
               colors: colors,
@@ -172,6 +173,7 @@ class AboutScreen extends ConsumerWidget {
             radius: 25,
             child: SmallContainer(
               title: "Cyber Security",
+              callback: (){},
               text: generateText.buildUnorderedList(cardText.cyberSecurityText()),
               imagePath: 'assets/cyber.png',
               colors: colors,
